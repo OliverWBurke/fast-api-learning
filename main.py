@@ -1,13 +1,14 @@
-from fastapi import FastAPI, HTTPException
 from enum import Enum
+
+from fastapi import FastAPI, HTTPException
 
 description = """
 Fast API Learning
 
 # Overview
 This is an API that I am playing with in order to learn FastAPI.
-This is not designed to do anthing particularly useful,
-I am just trying to implement basic functionality,
+This is not designed to do anything particularly useful,
+I am just trying to implement basic functionality.
 """
 
 tags = [
