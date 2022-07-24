@@ -33,7 +33,9 @@ app = FastAPI(
 @app.get(path="/", tags=["basic"])
 async def root():
     """
-    Hello world message at root of API
+    # Root
+    This is the root endpoint,
+    it just says hello.
     """
     return {"Hello": "World"}
 
@@ -41,9 +43,9 @@ async def root():
 @app.get(path="/health", tags=["basic"])
 async def health():
     """
-    This is a health endpoint. This is just used to ensure that the App is up and healthy
+    This is a health endpoint.
 
-    :return: status of the app
+    This is used to ensure that the App is up and healthy.
     """
     return {"status": "OK"}
 
@@ -52,6 +54,9 @@ async def health():
 async def unhealth():
     """
     This will always return a 502 error by design
+    This endpoint is part of two tags
+    - basic
+    - basic+
     """
     return HTTPException(
         status_code=502, detail="Unhealth endpoint always returns a 502"
@@ -62,8 +67,15 @@ async def unhealth():
 async def post_message(message: str):
     """
     This just sends back the message that is sent to the endpoint
-
-    :param message:
-    :return:
     """
     return {"message_received": message}
+
+
+@app.post(path="/number/{number}", tags=["basic_plus"])
+async def post_number(number: int):
+    """
+    This just sends back the number that is sent to the endpoint
+    The input parameter has a typehint to ensure that this is sent as a number
+    """
+    if type(number) == int:
+        return {"message": f"you sent the number {number}", "number": number}

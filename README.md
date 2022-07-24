@@ -3,22 +3,31 @@ Repo for things that I'm playing with to learn FastAPI
 
 ## API Endpoints
 
-Have implemented 4 basic endpoints, three of them are get endpoints, and one is a post.
+Have implemented some basic endpoints
 
-### Root
+### GET Root
 There is a root endpoint, that just returns a hello world type response.
 
-### Health
+### GET Health
 There is a health endpoint. This is just here to allow checking that the API
 is up and running, and should always just return a status:OK message.
 
-### Unhealth
+### GET Unhealth
 This endpoint will always return a 502 status code. Just implemented this to
 try out raising HTTP exception codes.
 
-### Post Message
-This is the only endpoint that is a post endpoint. It just accepts a message
-as a path parameter, and returns the message sent in the response.
+### POST Message
+This is a post endpoint. It just accepts a message as a path parameter,
+and returns the message sent in the response.
+
+### POST Number
+This is a post endpoint, that includes a type hint. The endpoint expects to receive
+an integer, and just returns the integer that was sent.
+It returns the number in a message, as well as the raw value.
+
+Because this has the type hint set up, it will return an error status if a non integer
+is provided. This doesn't need any code, it's dealt with by FastAPI.
+
 
 ## API Documentation
 
@@ -38,6 +47,10 @@ Once the tags are created, they can be associated with the endpoints.
 Each endpoint can have more than one tag,
 if it makes sense for it to be shown in multiple sections.
 
+### Function Docstrings
+Adding docstrings to the functions that are defined as endpoints will mean
+that the Swagger docs that are generated will show these docs.
+The docstrings should just be plain MD text.
 
 ## Running
 
