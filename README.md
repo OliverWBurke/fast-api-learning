@@ -27,6 +27,17 @@ We can set some metadata in the app when it is created.
 This will be shown in the swagger docs. I have completed most of the allowed parameters here,
 details of the parameters that can be passed are [here](https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api)
 
+### Endpoint Tags
+We can specify tags against each endpoint.
+This will group the endpoints in the swagger documentation.
+
+This is done by creating a list of tags, which have a name and description,
+and adding that as a parameter when creating the App.
+
+Once the tags are created, they can be associated with the endpoints.
+Each endpoint can have more than one tag,
+if it makes sense for it to be shown in multiple sections.
+
 
 ## Running
 
