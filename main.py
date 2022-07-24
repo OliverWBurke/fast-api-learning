@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from enum import Enum
 
 description = """
 Fast API Learning
@@ -79,3 +80,22 @@ async def post_number(number: int):
     """
     if type(number) == int:
         return {"message": f"you sent the number {number}", "number": number}
+
+
+class YesNo(str, Enum):
+    yes = "Yes"
+    no = "No"
+
+
+@app.get(path="/yes_or_no/{yes_or_no}", tags=["basic_plus"])
+async def get_yes_or_no(yes_or_no: YesNo):
+    """
+    This just takes a path parameter of yes or no,
+    and returns the option that has been chosen
+
+    Uses an Enum class to specify the allowed values that can be passed.
+    """
+    if yes_or_no == YesNo.yes:
+        return {"option_chosen": "yes"}
+    elif yes_or_no == YesNo.no:
+        return {"option_chosen": "no"}

@@ -28,6 +28,10 @@ It returns the number in a message, as well as the raw value.
 Because this has the type hint set up, it will return an error status if a non integer
 is provided. This doesn't need any code, it's dealt with by FastAPI.
 
+### GET Yes or No
+This is a get endpoint, that implements an Enum class.
+This is used to specify the options that are allowed
+to be passed as a path parameter.
 
 ## API Documentation
 
