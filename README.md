@@ -1,7 +1,7 @@
 # fast-api-learning
 Repo for things that I'm playing with to learn FastAPI
 
-## API
+## API Endpoints
 
 Have implemented 4 basic endpoints, three of them are get endpoints, and one is a post.
 
@@ -20,6 +20,13 @@ try out raising HTTP exception codes.
 This is the only endpoint that is a post endpoint. It just accepts a message
 as a path parameter, and returns the message sent in the response.
 
+## API Documentation
+
+### App Description
+We can set some metadata in the app when it is created.
+This will be shown in the swagger docs. I have completed most of the allowed parameters here,
+details of the parameters that can be passed are [here](https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api)
+
 
 ## Running
 
@@ -37,6 +44,10 @@ Once this is running, this can be accessed via a browser at http://localhost:800
 ### Swagger Docs
 Alternatively, FastAPI generates swagger docs at http://localhost:8000/docs,
 which can be used to test out the endpoints.
+
+There is an alternative docs page that gets created as well,
+at http://localhost:8000/redoc
+
 
 ### HTTPie
 [HTTPie](https://httpie.io/docs/cli) can be used from the commandline as well. HTTPie can be installed from pip

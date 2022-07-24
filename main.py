@@ -1,6 +1,24 @@
 from fastapi import FastAPI, HTTPException
 
-app = FastAPI()
+description = """
+Fast API Learning
+
+# Overview
+This is an API that I am playing with in order to learn FastAPI.
+This is not designed to do anthing particularly useful,
+I am just trying to implement basic functionality,
+"""
+
+app = FastAPI(
+    title="Fast API Learning",
+    description=description,
+    version="0.0.1",
+    contact={
+        "name": "Oliver",
+        "url": "https://www.oliverburke.uk/",
+        "email": "hi@oliverburke.uk",
+    },
+)
 
 
 @app.get(path="/")
