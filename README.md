@@ -39,11 +39,11 @@ Alternatively, FastAPI generates swagger docs at http://localhost:8000/docs,
 which can be used to test out the endpoints.
 
 ### HTTPie
-HTTPie can be used from the commandline as well. HTTPie can be installed from pip
+[HTTPie](https://httpie.io/docs/cli) can be used from the commandline as well. HTTPie can be installed from pip
 `pip install httpie`
 
 ```commandline
-> http localhost:8000
+> http GET localhost:8000
 
 HTTP/1.1 200 OK
 content-length: 17
@@ -55,7 +55,7 @@ server: uvicorn
     "Hello": "World"
 }
 
-> http localhost:8000/health
+> http GET localhost:8000/health
 
 HTTP/1.1 200 OK
 content-length: 15
@@ -68,7 +68,7 @@ server: uvicorn
 }
 
 
-> http localhost:8000/unhealth
+> http GET localhost:8000/unhealth
 
 HTTP/1.1 200 OK
 content-length: 84
@@ -82,6 +82,16 @@ server: uvicorn
     "status_code": 502
 }
 
+> http POST localhost:8000/message/Message_To_Send
 
+HTTP/1.1 200 OK
+content-length: 38
+content-type: application/json
+date: Sun, 24 Jul 2022 07:35:15 GMT
+server: uvicorn
+
+{
+    "message_received": "Message_To_Send"
+}
 
 ```
