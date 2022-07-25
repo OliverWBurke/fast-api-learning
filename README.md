@@ -145,3 +145,10 @@ server: uvicorn
 }
 
 ```
+
+## Tests
+We can add tests to the App using pytest,
+and the TestClient class that is included with FastAPI.
+
+We can set up a client, pass it our app,
+and then use the client to send different requests and test the outputs.

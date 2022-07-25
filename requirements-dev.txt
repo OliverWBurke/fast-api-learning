@@ -1,4 +1,5 @@
 black
 pre-commit
+pytest
 httpie
 isort
