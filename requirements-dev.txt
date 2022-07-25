@@ -1,5 +1,6 @@
 black
 pre-commit
 pytest
+pytest-cov
 httpie
 isort
