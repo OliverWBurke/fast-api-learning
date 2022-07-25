@@ -13,7 +13,8 @@ There is a health endpoint. This is just here to allow checking that the API
 is up and running, and should always just return a status:OK message.
 
 ### GET Unhealth
-This endpoint will always return a 502 status code.
+This endpoint will always raise a 502 status code.
+Note, we raise the exception here, not return it.
 Just implemented this to try out raising HTTP exception codes.
 
 ### POST Message

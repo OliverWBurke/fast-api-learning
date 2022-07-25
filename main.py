@@ -60,7 +60,7 @@ async def unhealth():
     - basic
     - basic+
     """
-    return HTTPException(
+    raise HTTPException(
         status_code=502, detail="Unhealth endpoint always returns a 502"
     )
 
@@ -84,8 +84,8 @@ async def post_number(number: int):
 
 
 class YesNo(str, Enum):
-    yes = "Yes"
-    no = "No"
+    yes = "yes"
+    no = "no"
 
 
 @app.get(path="/yes_or_no/{yes_or_no}", tags=["basic_plus"])
