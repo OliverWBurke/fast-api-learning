@@ -100,3 +100,19 @@ async def get_yes_or_no(yes_or_no: YesNo):
         return {"option_chosen": "yes"}
     elif yes_or_no == YesNo.no:
         return {"option_chosen": "no"}
+
+
+@app.get(path="/print_word/", tags=["basic_plus"])
+async def print_word(
+    word: str,
+    print_count: int = 1,
+    separator: str = ",",
+    make_upper: bool | None = None,
+):
+    """
+    This endpoint just prints out the word multiple times, separated by the separator provided
+    There is an optional boolean, called make_upper, that will make the output upper case
+    """
+    if make_upper:
+        word = word.upper()
+    return {"word": separator.join([word for _ in range(print_count)])}

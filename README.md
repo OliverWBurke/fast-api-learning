@@ -13,32 +13,42 @@ There is a health endpoint. This is just here to allow checking that the API
 is up and running, and should always just return a status:OK message.
 
 ### GET Unhealth
-This endpoint will always return a 502 status code. Just implemented this to
-try out raising HTTP exception codes.
+This endpoint will always return a 502 status code.
+Just implemented this to try out raising HTTP exception codes.
 
 ### POST Message
 This is a post endpoint. It just accepts a message as a path parameter,
 and returns the message sent in the response.
 
 ### POST Number
-This is a post endpoint, that includes a type hint. The endpoint expects to receive
-an integer, and just returns the integer that was sent.
+This is a post endpoint, that includes a type hint.
+The endpoint expects to receive an integer,
+and just returns the integer that was sent.
 It returns the number in a message, as well as the raw value.
 
-Because this has the type hint set up, it will return an error status if a non integer
-is provided. This doesn't need any code, it's dealt with by FastAPI.
+Because this has the type hint set up,
+it will return an error status if a non integer is provided.
+This doesn't need any code, it's dealt with by FastAPI.
 
 ### GET Yes or No
 This is a get endpoint, that implements an Enum class.
 This is used to specify the options that are allowed
 to be passed as a path parameter.
 
+### GET Print Word
+This is a get endpoint, that implements query parameters.
+Query parameters done need to be added to the decorator,
+they are just function arguments. These all have type hints,
+and default values where needed.
+
 ## API Documentation
 
 ### App Description
 We can set some metadata in the app when it is created.
-This will be shown in the swagger docs. I have completed most of the allowed parameters here,
-details of the parameters that can be passed are [here](https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api)
+This will be shown in the swagger docs. I have completed
+most of the allowed parameters here,
+details of the parameters that can be passed are
+[here](https://fastapi.tiangolo.com/tutorial/metadata/#metadata-for-api)
 
 ### Endpoint Tags
 We can specify tags against each endpoint.
@@ -78,7 +88,8 @@ at http://localhost:8000/redoc
 
 
 ### HTTPie
-[HTTPie](https://httpie.io/docs/cli) can be used from the commandline as well. HTTPie can be installed from pip
+[HTTPie](https://httpie.io/docs/cli) can be used from the commandline as well.
+HTTPie can be installed from pip
 `pip install httpie`
 
 ```commandline
