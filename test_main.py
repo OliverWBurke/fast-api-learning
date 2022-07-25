@@ -1,3 +1,5 @@
+import json
+
 from fastapi.testclient import TestClient
 
 from main import YesNo, app
@@ -102,3 +104,44 @@ def test_print_word_upper():
     assert response.status_code == 200
     test_word_upper = test_word.upper()
     assert response.json()["word"] == f"{test_word_upper},{test_word_upper}"
+
+
+def test_send_body():
+    test_body = {
+        "test_string": "string",
+        "test_integer": 0,
+        "test_float": 0,
+        "test_bool": True,
+    }
+    response = client.post("/send_body/", data=json.dumps(test_body))
+    assert response.status_code == 200
+    response_json = response.json()
+    for k, v in test_body.items():
+        assert response_json[k] == v
+    assert response_json["test_optional_with_default"] == "default_value"
+
+
+def test_send_body_with_raise_requested():
+    test_body = {
+        "test_string": "string",
+        "test_integer": 0,
+        "test_float": 0,
+        "test_bool": True,
+        "test_raising_error": True,
+    }
+    response = client.post("/send_body/", data=json.dumps(test_body))
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Raising an error cos you asked it to"
+
+
+def test_send_body_with_formatted_response():
+    test_body = {
+        "test_string": "string",
+        "test_integer": 0,
+        "test_float": 0,
+        "test_bool": True,
+        "test_format_output": True,
+    }
+    response = client.post("/send_body/", data=json.dumps(test_body))
+    assert response.status_code == 200
+    assert response.json()["your_request_body_formatted"]

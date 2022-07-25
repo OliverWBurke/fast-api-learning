@@ -1,6 +1,7 @@
 from enum import Enum
 
 from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 
 description = """
 Fast API Learning
@@ -116,3 +117,27 @@ async def print_word(
     if make_upper:
         word = word.upper()
     return {"word": separator.join([word for _ in range(print_count)])}
+
+
+class TestRequestBody(BaseModel):
+    test_string: str
+    test_integer: int
+    test_float: float
+    test_bool: bool
+    test_optional_with_default: str = "default_value"
+    test_raising_error: bool = False
+    test_format_output: bool = False
+
+
+@app.post("/send_body/")
+def send_body(body: TestRequestBody):
+    if body.test_raising_error:
+        raise HTTPException(
+            status_code=404, detail="Raising an error cos you asked it to"
+        )
+    if body.test_format_output:
+        formatted_request_body = ",".join(
+            [f"{key}:{value}" for key, value in body.dict().items()]
+        )
+        return {"your_request_body_formatted": formatted_request_body}
+    return body

@@ -42,6 +42,15 @@ Query parameters done need to be added to the decorator,
 they are just function arguments. These all have type hints,
 and default values where needed.
 
+
+### POST Send Body
+This is a post endpoint, that shows how we can accept data in the body of a request.
+We create a Pydantic class based of the pydantic BaseModel.
+This class details the expectations of the body that we expect to receive.
+We can add some logic in the function call to do different things based on
+values provided in the body
+
+
 ## API Documentation
 
 ### App Description
