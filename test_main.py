@@ -91,3 +91,14 @@ def test_print_word_simple():
     response = client.get(f"/print_word/?word={test_word}&print_count={test_count}")
     assert response.status_code == 200
     assert response.json()["word"] == f"{test_word},{test_word}"
+
+
+def test_print_word_upper():
+    test_word = "test_word"
+    test_count = 2
+    response = client.get(
+        f"/print_word/?word={test_word}&print_count={test_count}&make_upper=TRUE"
+    )
+    assert response.status_code == 200
+    test_word_upper = test_word.upper()
+    assert response.json()["word"] == f"{test_word_upper},{test_word_upper}"
