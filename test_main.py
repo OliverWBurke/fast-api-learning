@@ -2,7 +2,7 @@ import json
 
 from fastapi.testclient import TestClient
 
-from main import YesNo, app
+from backend.app.api import YesNo, app
 
 client = TestClient(app)
 
