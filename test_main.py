@@ -41,10 +41,20 @@ def test_unhealth():
 
 
 def test_post_message():
-    test_message = "test message"
+    test_message = "test msg"
     response = client.post(f"/message/{test_message}")
     assert response.status_code == 200
     assert response.json() == {"message_received": test_message}
+
+
+def test_post_too_long_message():
+    test_message = "test message"
+    response = client.post(f"/message/{test_message}")
+    assert response.status_code == 422
+    assert (
+        response.json()["detail"][0]["msg"]
+        == "ensure this value has at most 10 characters"
+    )
 
 
 def test_post_message_no_message():

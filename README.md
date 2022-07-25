@@ -76,6 +76,16 @@ Adding docstrings to the functions that are defined as endpoints will mean
 that the Swagger docs that are generated will show these docs.
 The docstrings should just be plain MD text.
 
+
+### Input Validation
+
+#### Path Parameters
+We can validate the input by importing and using the Path class.
+This allows us to specify additional validation in the path parameter,
+above just the type. For example, in the post_message, we have implemented
+a max length on the message that we receive.
+We can use this to add more docs and things as well.
+
 ## Running
 
 We can serve the API by running this using [uvicorn](https://www.uvicorn.org/)

@@ -1,6 +1,6 @@
 from enum import Enum
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Path
 from pydantic import BaseModel
 
 description = """
@@ -66,8 +66,25 @@ async def unhealth():
     )
 
 
+post_message_description = """
+# Message
+We can pass a message here.
+
+The API is just going to send this message back to you
+The max length of the message should be 10 characters
+
+"""
+
+
 @app.post(path="/message/{message}", tags=["basic_plus"])
-async def post_message(message: str):
+async def post_message(
+    message: str = Path(
+        default=None,
+        description=post_message_description,
+        max_length=10,
+        example="test_msg",
+    )
+):
     """
     This just sends back the message that is sent to the endpoint
     """
