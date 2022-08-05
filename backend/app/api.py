@@ -1,6 +1,7 @@
 from enum import Enum
 
 from fastapi import FastAPI, HTTPException, Path
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 description = """
@@ -30,6 +31,17 @@ app = FastAPI(
         "email": "hi@oliverburke.uk",
     },
     openapi_tags=tags,
+)
+
+
+origins = ["http://localhost:3000", "localhost:3000"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
