@@ -91,7 +91,14 @@ We can use this to add more docs and things as well.
 We can serve the API by running this using [uvicorn](https://www.uvicorn.org/)
 
 ```commandline
-uvicorn main:app --host "0.0.0.0" --port 8000 --reload
+cd ./backend/app
+uvicorn api:app --host "0.0.0.0" --port 8000 --reload
+```
+
+Alternatively, there is a python main function that does this
+```commandline
+cd ./backend
+python main.py
 ```
 
 ## Access for Testing
